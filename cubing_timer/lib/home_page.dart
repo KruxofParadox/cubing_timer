@@ -1,8 +1,6 @@
-import 'package:cubing_timer/components/algorithm_slider.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'components/timer.dart';
+import 'package:cubing_timer/components/algorithms/algorithm_slider.dart';
+import 'components/timer_components/timer.dart';
 import 'package:flutter/material.dart';
-import 'components/algorithms.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
