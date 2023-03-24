@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TimerButton extends StatefulWidget {
-  final int buttonPressed;
   final Function() callback;
 
   TimerButton({
     super.key,
-    required this.buttonPressed,
     required this.callback,
   });
 
@@ -37,7 +35,7 @@ class _TimerButtonState extends State<TimerButton> {
           borderRadius: BorderRadius.circular(20),
           onTap: () {
             setState(() {
-              // inverts text and box color and changes text
+              // inverts text and box color and updates message
               index++;
               index %= 2;
 
