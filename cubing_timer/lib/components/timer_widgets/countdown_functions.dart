@@ -10,7 +10,7 @@ late int countdownTime = countdownDuration;
 String elapsedTime = '0';
 
 void countdownToggle() {
-  !countdownStarted ? startCountdown() : stopCountdown();
+  !countdownStarted ? startCountdown() : endCountdown();
 }
 
 void startCountdown() {
@@ -20,7 +20,7 @@ void startCountdown() {
   timer = Timer.periodic(const Duration(milliseconds: 1), updateTime);
 }
 
-void stopCountdown() {
+void endCountdown() {
   countdownStarted = !countdownStarted;
   watch.stop();
   watch.reset();
@@ -32,7 +32,7 @@ void updateTime(Timer timer) {
   if (watch.isRunning && (countdownTime > 0)) {
     elapsedTime = formatCountdownDisplay(watch.elapsedMilliseconds);
   } else {
-    stopCountdown();
+    endCountdown();
   }
 }
 

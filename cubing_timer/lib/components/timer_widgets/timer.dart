@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cubing_timer/components/timer_widgets/timer_displays.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'timer_button.dart';
 import 'package:flutter/material.dart';
@@ -38,13 +39,10 @@ class _TimerWidgetState extends State<TimerWidget> {
             ],
           ),
 
-          const SizedBox(
-            height: 100,
-          ),
+          const SizedBox(height: 100),
 
           // BUTTON TO START TIMER
           TimerButton(
-            buttonPressed: 0,
             callback: countdownToggle,
           ),
         ],
@@ -53,7 +51,7 @@ class _TimerWidgetState extends State<TimerWidget> {
   }
 
   void countdownToggle() {
-    !countdownStarted ? startCountdown() : stopCountdown();
+    !countdownStarted ? startCountdown() : endCountdown();
   }
 
   void startCountdown() {
@@ -65,13 +63,14 @@ class _TimerWidgetState extends State<TimerWidget> {
     });
   }
 
-  void stopCountdown() {
+  void endCountdown() {
     setState(() {
       countdownStarted = !countdownStarted;
       watch.stop();
       watch.reset();
       timer?.cancel();
       elapsedTime = '0';
+      beginTiming();
     });
   }
 
@@ -81,7 +80,7 @@ class _TimerWidgetState extends State<TimerWidget> {
         elapsedTime = formatCountdownDisplay(watch.elapsedMilliseconds);
       });
     } else {
-      stopCountdown();
+      endCountdown();
     }
   }
 
@@ -95,48 +94,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     return '$countdownTime';
   }
 
-  Column timerBlock(label, time) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        // Number display
-        Container(
-          height: 95,
-          width: 95,
-          decoration: timerDecoration(),
-          child: Center(
-            child: Text(
-              time.toString(),
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-        // Unit display
-        Text(
-          '$label',
-          style: timerLabels(),
-        ),
-      ],
-    );
-  }
-
-  BoxDecoration timerDecoration() {
-    return BoxDecoration(
-      color: Colors.grey[300],
-      borderRadius: BorderRadius.circular(20),
-    );
-  }
-
-  TextStyle timerLabels() {
-    return GoogleFonts.ubuntu(
-      textStyle: const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
-    );
+  void beginTiming() {
+    print("This function was run");
   }
 }
