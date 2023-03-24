@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TimerButton extends StatefulWidget {
-  int minutes;
-  int seconds;
-  int milliseconds;
-  final Function(bool) callback;
+  final int buttonPressed;
+  final Function() callback;
 
   TimerButton({
     super.key,
-    required this.minutes,
-    required this.seconds,
-    required this.milliseconds,
+    required this.buttonPressed,
     required this.callback,
   });
 
@@ -20,7 +16,6 @@ class TimerButton extends StatefulWidget {
 }
 
 class _TimerButtonState extends State<TimerButton> {
-  bool buttonPressed = false;
   int index = 0;
   List textColors = [Colors.white, Colors.deepPurple];
   List boxColors = [Colors.deepPurple, Colors.white];
@@ -46,11 +41,8 @@ class _TimerButtonState extends State<TimerButton> {
               index++;
               index %= 2;
 
-              // if button has been pressed -> mark it
-              buttonPressed = !buttonPressed;
-
               // run callback function
-              widget.callback(buttonPressed);
+              widget.callback();
             });
           },
           child: Align(

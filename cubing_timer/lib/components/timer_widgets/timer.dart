@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'timer_button.dart';
 import 'package:flutter/material.dart';
+import 'countdown_functions.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});
@@ -11,10 +12,13 @@ class TimerWidget extends StatefulWidget {
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
-  int minutes = 0;
-  int seconds = 0;
-  int milliseconds = 0;
+  Stopwatch watch = Stopwatch();
   Timer? timer;
+  bool countdownStarted = false;
+  int countdownDuration = 15;
+  late int countdownTime = countdownDuration;
+
+  String elapsedTime = '0';
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +32,9 @@ class _TimerWidgetState extends State<TimerWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              timerBlock('Minutes', minutes),
-              timerBlock('Seconds', seconds),
-              timerBlock('Milliseconds', milliseconds),
+              timerBlock('Minutes', "0"),
+              timerBlock('Seconds', elapsedTime),
+              timerBlock('Milliseconds', "0"),
             ],
           ),
 
@@ -40,32 +44,55 @@ class _TimerWidgetState extends State<TimerWidget> {
 
           // BUTTON TO START TIMER
           TimerButton(
-              minutes: minutes,
-              seconds: seconds,
-              milliseconds: milliseconds,
-              callback: (p0) {
-                inspectionCountdown();
-              }),
+            buttonPressed: 0,
+            callback: countdownToggle,
+          ),
         ],
       ),
     );
   }
 
-  void inspectionCountdown() {
-    seconds = 15;
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (seconds > 0) {
-        setState(() {
-          seconds--;
-        });
-      } else {
-        timer.cancel();
+  void countdownToggle() {
+    !countdownStarted ? startCountdown() : stopCountdown();
+  }
 
-        /// TODO: Button Functionality
-        /// Once timer hits 0 -> begin counting up from 0
-        /// Once button is pressed again -> stop the timer
-      }
+  void startCountdown() {
+    setState(() {
+      countdownTime = countdownDuration;
+      countdownStarted = !countdownStarted;
+      watch.start();
+      timer = Timer.periodic(const Duration(milliseconds: 1), updateTime);
     });
+  }
+
+  void stopCountdown() {
+    setState(() {
+      countdownStarted = !countdownStarted;
+      watch.stop();
+      watch.reset();
+      timer?.cancel();
+      elapsedTime = '0';
+    });
+  }
+
+  void updateTime(Timer timer) {
+    if (watch.isRunning && (countdownTime > 0)) {
+      setState(() {
+        elapsedTime = formatCountdownDisplay(watch.elapsedMilliseconds);
+      });
+    } else {
+      stopCountdown();
+    }
+  }
+
+  String formatCountdownDisplay(int milliseconds) {
+    int seconds = (milliseconds / 1000).truncate();
+
+    setState(() {
+      countdownTime = countdownDuration - seconds;
+    });
+
+    return '$countdownTime';
   }
 
   Column timerBlock(label, time) {

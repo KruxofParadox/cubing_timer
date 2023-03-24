@@ -1,5 +1,5 @@
 import 'package:cubing_timer/components/algorithms/algorithm_slider.dart';
-import 'components/timer_components/timer.dart';
+import 'components/timer_widgets/timer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
