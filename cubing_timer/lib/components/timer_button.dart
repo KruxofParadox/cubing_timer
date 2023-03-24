@@ -24,7 +24,7 @@ class _TimerButtonState extends State<TimerButton> {
   int index = 0;
   List textColors = [Colors.white, Colors.deepPurple];
   List boxColors = [Colors.deepPurple, Colors.white];
-  List timerMessage = ['S T A R T', 'S T O P'];
+  List timerMessage = ['S T A R T', 'S K I P'];
 
   @override
   Widget build(BuildContext context) {
