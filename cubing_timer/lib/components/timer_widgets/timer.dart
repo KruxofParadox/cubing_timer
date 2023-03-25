@@ -23,10 +23,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      // color: Colors.amber,
-      width: 400,
-      height: 500,
+    return Container(
       child: Column(
         children: [
           // BOXES FOR TIME

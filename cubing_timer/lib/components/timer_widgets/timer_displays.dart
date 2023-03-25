@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// LABELS AND BOX PUT TOGETHER
 Column timerBlock(label, time) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -30,6 +31,7 @@ Column timerBlock(label, time) {
   );
 }
 
+// DECORATION FOR BOX AROUND TIME
 BoxDecoration timerDecoration() {
   return BoxDecoration(
     color: Colors.grey[300],
@@ -37,6 +39,7 @@ BoxDecoration timerDecoration() {
   );
 }
 
+// TEXT UNDER TIME DISPLAY
 TextStyle timerLabels() {
   return GoogleFonts.ubuntu(
     textStyle: const TextStyle(
