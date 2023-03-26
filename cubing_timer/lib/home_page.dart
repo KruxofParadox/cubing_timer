@@ -1,6 +1,7 @@
-import 'package:cubing_timer/components/algorithms/algorithm_slider.dart';
+import 'package:cubing_timer/pages/graph_page.dart';
+import 'package:cubing_timer/pages/settings_page.dart';
+import 'package:cubing_timer/pages/timer_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'components/timer_widgets/timer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +12,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  final List<Widget> pages = [
+    const TimerPage(),
+    const GraphPage(),
+    const SettingsPage(),
+  ];
+
+  void _navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +43,7 @@ class _HomePageState extends State<HomePage> {
             activeColor: Colors.white,
             tabBackgroundColor: Colors.deepPurple,
             gap: 8,
+            onTabChange: _navigateBottomBar,
             padding: const EdgeInsets.all(8),
             tabs: const [
               GButton(
@@ -47,22 +62,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Column(
-        children: const [
-          // GENERATE SCRAMBLES
-          AlgorithmSlider(),
-
-          SizedBox(
-            height: 110,
-          ),
-
-          // TIMER FOR SOLVES
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: TimerWidget(),
-          ),
-        ],
-      ),
+      body: pages[_selectedIndex],
     );
   }
 }
