@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8),
             tabs: const [
               GButton(
-                icon: Icons.home_rounded,
-                text: 'Home',
+                icon: Icons.timer_rounded,
+                text: 'Timer',
               ),
               GButton(
                 icon: Icons.bar_chart_rounded,
