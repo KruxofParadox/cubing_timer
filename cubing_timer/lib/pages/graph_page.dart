@@ -32,7 +32,7 @@ class GraphPage extends StatelessWidget {
                   height: 50,
                   decoration: BoxDecoration(
                       color: baseGrey, borderRadius: BorderRadius.circular(12)),
-                  child: Icon(Icons.filter),
+                  child: const Icon(Icons.filter),
                 )
               ],
             ),
