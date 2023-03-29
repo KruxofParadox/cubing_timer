@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cubing_timer/components/const.dart';
 import 'algorithms.dart';
 
 class AlgorithmSlider extends StatefulWidget {
@@ -32,15 +33,15 @@ class _AlgorithmSliderState extends State<AlgorithmSlider> {
                   onPressed: ((context) {
                     setScramble();
                   }),
-                  backgroundColor: Colors.grey.shade300,
-                  foregroundColor: Colors.black,
+                  backgroundColor: baseGrey,
+                  foregroundColor: textColor,
                   borderRadius: BorderRadius.circular(100),
                   icon: Icons.refresh,
                 ),
               ],
             ),
             child: Container(
-              color: Colors.white,
+              color: mainColor,
               child: ListTile(
                 title: Text(
                   scramble,

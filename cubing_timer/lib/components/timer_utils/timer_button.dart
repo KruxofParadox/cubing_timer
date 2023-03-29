@@ -1,3 +1,4 @@
+import 'package:cubing_timer/components/const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,8 +16,8 @@ class TimerButton extends StatefulWidget {
 
 class _TimerButtonState extends State<TimerButton> {
   int index = 0;
-  List textColors = [Colors.white, Colors.deepPurple];
-  List boxColors = [Colors.deepPurple, Colors.white];
+  List textColors = [mainColor, accentColors[0]];
+  List boxColors = [accentColors[0], mainColor];
   List timerMessage = ['S T A R T', 'S K I P'];
 
   @override
@@ -27,7 +28,7 @@ class _TimerButtonState extends State<TimerButton> {
       decoration: BoxDecoration(
           color: boxColors[index],
           border: Border.all(
-            color: Colors.deepPurple,
+            color: accentColors[0],
             width: 2,
           ),
           borderRadius: BorderRadius.circular(20)),
