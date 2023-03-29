@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'package:cubing_timer/components/timer_widgets/timer_displays.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cubing_timer/components/timer_utils/timer_displays.dart';
 import 'timer_button.dart';
 import 'package:flutter/material.dart';
 import 'countdown_functions.dart';
@@ -23,27 +22,25 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          // BOXES FOR TIME
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              timerBlock('Minutes', "0"),
-              timerBlock('Seconds', elapsedTime),
-              timerBlock('Milliseconds', "0"),
-            ],
-          ),
+    return Column(
+      children: [
+        // BOXES FOR TIME
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            timerBlock('Minutes', "0"),
+            timerBlock('Seconds', elapsedTime),
+            timerBlock('Milliseconds', "0"),
+          ],
+        ),
 
-          const SizedBox(height: 100),
+        const SizedBox(height: 100),
 
-          // BUTTON TO START TIMER
-          TimerButton(
-            callback: countdownToggle,
-          ),
-        ],
-      ),
+        // BUTTON TO START TIMER
+        TimerButton(
+          callback: countdownToggle,
+        ),
+      ],
     );
   }
 

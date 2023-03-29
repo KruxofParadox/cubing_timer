@@ -2,6 +2,7 @@ import 'package:cubing_timer/pages/graph_page.dart';
 import 'package:cubing_timer/pages/settings_page.dart';
 import 'package:cubing_timer/pages/timer_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'components/const.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,20 +29,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: mainColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       bottomNavigationBar: Container(
-        color: Colors.grey.shade300,
+        color: baseGrey,
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: GNav(
-            backgroundColor: Colors.grey.shade300,
-            color: Colors.black,
-            activeColor: Colors.white,
-            tabBackgroundColor: Colors.deepPurple,
+            backgroundColor: baseGrey,
+            color: textColor,
+            activeColor: mainColor,
+            tabBackgroundColor: accentColors[0],
             gap: 8,
             onTabChange: _navigateBottomBar,
             padding: const EdgeInsets.all(8),

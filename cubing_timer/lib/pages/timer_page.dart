@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../components/algorithms/algorithm_slider.dart';
-import '../components/timer_widgets/timer.dart';
+import '../components/algorithm_utils/algorithm_slider.dart';
+import '../components/timer_utils/timer.dart';
 
 class TimerPage extends StatelessWidget {
   const TimerPage({super.key});
