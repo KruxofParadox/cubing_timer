@@ -10,19 +10,11 @@ class SettingsPage extends StatelessWidget {
     return SizedBox.expand(
       child: Column(
         children: [
-          const Text(
-            'Settings',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            ),
-          ),
-
           const SizedBox(height: 30),
 
           Container(
             width: 350,
-            height: 560,
+            height: 620,
             decoration: BoxDecoration(
               color: baseGrey,
               borderRadius: BorderRadius.circular(12),
