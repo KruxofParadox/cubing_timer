@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:cubing_timer/components/const.dart';
 import 'algorithms.dart';
 
@@ -46,10 +45,10 @@ class _AlgorithmSliderState extends State<AlgorithmSlider> {
                 title: Text(
                   scramble,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.ubuntu(
-                    textStyle: const TextStyle(
-                      fontSize: 22,
-                    ),
+                  style: convertFontToUbuntu(
+                    22,
+                    false,
+                    Colors.black,
                   ),
                 ),
               ),

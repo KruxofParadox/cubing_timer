@@ -46,12 +46,10 @@ class _TimerButtonState extends State<TimerButton> {
           },
           child: Align(
             child: Text(timerMessage[index],
-                style: GoogleFonts.ubuntu(
-                  textStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: textColors[index],
-                  ),
+                style: convertFontToUbuntu(
+                  20,
+                  true,
+                  textColors[index],
                 )),
           )),
     );

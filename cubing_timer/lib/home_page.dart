@@ -43,18 +43,33 @@ class _HomePageState extends State<HomePage> {
             gap: 8,
             onTabChange: _navigateBottomBar,
             padding: const EdgeInsets.all(8),
-            tabs: const [
+            tabs: [
               GButton(
                 icon: Icons.timer_rounded,
                 text: 'Timer',
+                textStyle: convertFontToUbuntu(
+                  15,
+                  true,
+                  mainColor,
+                ),
               ),
               GButton(
                 icon: Icons.bar_chart_rounded,
                 text: 'Graph',
+                textStyle: convertFontToUbuntu(
+                  15,
+                  true,
+                  mainColor,
+                ),
               ),
               GButton(
                 icon: Icons.settings_rounded,
                 text: 'Settings',
+                textStyle: convertFontToUbuntu(
+                  15,
+                  true,
+                  mainColor,
+                ),
               ),
             ],
           ),
@@ -77,9 +92,10 @@ class _HomePageState extends State<HomePage> {
         title: Center(
           child: Text(
             'Stats',
-            style: TextStyle(
-              fontSize: 28,
-              color: mainColor,
+            style: convertFontToUbuntu(
+              28,
+              true,
+              mainColor,
             ),
           ),
         ),
@@ -92,9 +108,10 @@ class _HomePageState extends State<HomePage> {
         title: Center(
           child: Text(
             'Settings',
-            style: TextStyle(
-              fontSize: 28,
-              color: mainColor,
+            style: convertFontToUbuntu(
+              28,
+              true,
+              mainColor,
             ),
           ),
         ),

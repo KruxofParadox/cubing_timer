@@ -18,10 +18,10 @@ class SettingsTile extends StatelessWidget {
         children: [
           Text(
             text,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            style: convertFontToUbuntu(
+              20,
+              true,
+              textColor,
             ),
           ),
           Container(
