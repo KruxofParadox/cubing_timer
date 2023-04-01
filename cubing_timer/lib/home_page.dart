@@ -30,10 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: _determineAppBar(_selectedIndex),
       bottomNavigationBar: Container(
         color: baseGrey,
         child: Padding(
@@ -65,5 +62,45 @@ class _HomePageState extends State<HomePage> {
       ),
       body: pages[_selectedIndex],
     );
+  }
+
+  AppBar _determineAppBar(index) {
+    // TIMER PAGE
+    if (index == 0) {
+      return AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      );
+      // STATS PAGE
+    } else if (index == 1) {
+      return AppBar(
+        title: Center(
+          child: Text(
+            'Stats',
+            style: TextStyle(
+              fontSize: 28,
+              color: mainColor,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.deepPurple,
+        elevation: 0,
+      );
+      // SETTINGS PAGE
+    } else {
+      return AppBar(
+        title: Center(
+          child: Text(
+            'Settings',
+            style: TextStyle(
+              fontSize: 28,
+              color: mainColor,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.deepPurple,
+        elevation: 0,
+      );
+    }
   }
 }

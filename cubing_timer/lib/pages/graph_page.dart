@@ -15,13 +15,14 @@ class GraphPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(height: 30),
             Container(
                 padding: const EdgeInsets.all(8),
-                height: 200,
+                height: 400,
                 child: solveTimes.isEmpty
                     ? const NoGraphDisplay()
                     : MyBarGraph(solveTimes: solveTimes)),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
 
             // FILTER BUTTON
             Row(
