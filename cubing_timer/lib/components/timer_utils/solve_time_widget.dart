@@ -22,9 +22,10 @@ class SolveTimeWidget extends StatelessWidget {
       child: Center(
         child: Text(
           solveTime.toString(),
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+          style: convertFontToUbuntu(
+            18,
+            true,
+            textColor,
           ),
         ),
       ),

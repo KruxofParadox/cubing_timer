@@ -1,6 +1,5 @@
 import 'package:cubing_timer/components/const.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // LABELS AND BOX PUT TOGETHER
 Column timerBlock(label, time) {
@@ -30,7 +29,7 @@ Column timerBlock(label, time) {
       // Unit display
       Text(
         '$label',
-        style: timerLabels(),
+        style: convertFontToUbuntu(18, true, textColor),
       ),
     ],
   );
@@ -41,15 +40,5 @@ BoxDecoration timerDecoration() {
   return BoxDecoration(
     color: baseGrey,
     borderRadius: BorderRadius.circular(20),
-  );
-}
-
-// TEXT UNDER TIME DISPLAY
-TextStyle timerLabels() {
-  return GoogleFonts.ubuntu(
-    textStyle: const TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.bold,
-    ),
   );
 }
