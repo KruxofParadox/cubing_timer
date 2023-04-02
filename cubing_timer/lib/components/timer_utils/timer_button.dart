@@ -34,16 +34,7 @@ class _TimerButtonState extends State<TimerButton> {
           borderRadius: BorderRadius.circular(20)),
       child: InkWell(
           borderRadius: BorderRadius.circular(20),
-          onTap: () {
-            setState(() {
-              // inverts text and box color and updates message
-              index++;
-              index %= 2;
-
-              // run callback function
-              widget.callback();
-            });
-          },
+          onTap: switchButtonPressed,
           child: Align(
             child: Text(timerMessage[index],
                 style: convertFontToUbuntu(
@@ -53,5 +44,16 @@ class _TimerButtonState extends State<TimerButton> {
                 )),
           )),
     );
+  }
+
+  void switchButtonPressed() {
+    setState(() {
+      // inverts text and box color and updates message
+      index++;
+      index %= 2;
+
+      // run callback function
+      widget.callback();
+    });
   }
 }
