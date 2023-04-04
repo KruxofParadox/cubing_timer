@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cubing_timer/components/timer_utils/timer_controller.dart';
 import 'package:cubing_timer/components/timer_utils/timer_displays.dart';
 import 'timer_button.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _TimerWidgetState extends State<TimerWidget> {
   bool countdownStarted = false;
   int countdownDuration = 15;
   late int countdownTime = countdownDuration;
+  late final controller = TimerController(countdownStarted);
 
   String elapsedTime = '0';
 
@@ -39,6 +41,7 @@ class _TimerWidgetState extends State<TimerWidget> {
         // BUTTON TO START TIMER
         TimerButton(
           callback: countdownToggle,
+          controller: controller,
         ),
       ],
     );
@@ -88,7 +91,5 @@ class _TimerWidgetState extends State<TimerWidget> {
     return '$countdownTime';
   }
 
-  void beginTiming() {
-    print("This function was run");
-  }
+  void beginTiming() {}
 }
