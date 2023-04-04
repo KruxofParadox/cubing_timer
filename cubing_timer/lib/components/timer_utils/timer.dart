@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:cubing_timer/components/timer_utils/timer_displays.dart';
-import 'timer_button.dart';
+import '../const.dart';
 import 'package:flutter/material.dart';
 import 'countdown_functions.dart';
 
@@ -12,13 +12,19 @@ class TimerWidget extends StatefulWidget {
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
+  // TIMER VARIABLES
   Stopwatch watch = Stopwatch();
   Timer? timer;
   bool countdownStarted = false;
-  int countdownDuration = 15;
-  late int countdownTime = countdownDuration;
-
+  final int inspectionTime = 15;
+  late int countdownTime = inspectionTime;
   String elapsedTime = '0';
+
+  // TIMER BUTTON VARIABLES
+  int index = 0;
+  List textColors = [mainColor, accentColors[0]];
+  List boxColors = [accentColors[0], mainColor];
+  List timerMessage = ['S T A R T', 'S K I P'];
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +42,59 @@ class _TimerWidgetState extends State<TimerWidget> {
 
         const SizedBox(height: 100),
 
-        // BUTTON TO START TIMER
-        TimerButton(
-          callback: countdownToggle,
-        ),
+        // TIMER BUTTON
+        Container(
+          height: 50,
+          width: 150,
+          decoration: BoxDecoration(
+            color: boxColors[index],
+            border: Border.all(
+              color: accentColors[0],
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(20),
+            onTap: countdownToggle,
+            child: Align(
+              child: Text(
+                timerMessage[index],
+                style: convertFontToUbuntu(
+                  20,
+                  true,
+                  textColors[index],
+                ),
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
 
   void countdownToggle() {
-    !countdownStarted ? startCountdown() : endCountdown();
+    switchButtonPressed();
+    countdownStarted = !countdownStarted;
+    if (countdownStarted) {
+      startCountdown();
+    } else {
+      endCountdown();
+    }
+  }
+
+  // Switches the appearance of the button
+  void switchButtonPressed() {
+    setState(() {
+      // cycles through text, box color, and text color
+      index++;
+      index %= 2;
+    });
   }
 
   void startCountdown() {
     setState(() {
-      countdownTime = countdownDuration;
-      countdownStarted = !countdownStarted;
+      countdownTime = inspectionTime;
       watch.start();
       timer = Timer.periodic(const Duration(milliseconds: 1), updateTime);
     });
@@ -59,7 +102,6 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   void endCountdown() {
     setState(() {
-      countdownStarted = !countdownStarted;
       watch.stop();
       watch.reset();
       timer?.cancel();
@@ -69,12 +111,18 @@ class _TimerWidgetState extends State<TimerWidget> {
   }
 
   void updateTime(Timer timer) {
-    if (watch.isRunning && (countdownTime > 0)) {
+    if (!watch.isRunning) {
+      endCountdown();
+    } else {
       setState(() {
         elapsedTime = formatCountdownDisplay(watch.elapsedMilliseconds);
       });
-    } else {
-      endCountdown();
+      // Checks for if the countdown has reached 0
+      if (countdownTime == 0) {
+        countdownStarted = !countdownStarted;
+        switchButtonPressed();
+        endCountdown();
+      }
     }
   }
 
@@ -82,13 +130,11 @@ class _TimerWidgetState extends State<TimerWidget> {
     int seconds = (milliseconds / 1000).truncate();
 
     setState(() {
-      countdownTime = countdownDuration - seconds;
+      countdownTime = inspectionTime - seconds;
     });
 
     return '$countdownTime';
   }
 
-  void beginTiming() {
-    print("This function was run");
-  }
+  void beginTiming() {}
 }
