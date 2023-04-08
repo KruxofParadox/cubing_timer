@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> pages = [
     const TimerPage(),
     const GraphPage(),
-    const SettingsPage(),
+    SettingsPage(),
   ];
 
   void _navigateBottomBar(int index) {
