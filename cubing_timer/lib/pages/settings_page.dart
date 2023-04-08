@@ -1,98 +1,80 @@
 import 'package:cubing_timer/components/const.dart';
-import 'package:cubing_timer/components/settings_utils/settings_tile.dart';
 import 'package:flutter/material.dart';
 
+import '../components/settings_utils/settings_tile.dart';
+
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  SettingsPage({super.key});
+
+  int settings_index = 0;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: Column(
-        children: [
-          const SizedBox(height: 30),
+    if (settings_index == 0) {
+      return SizedBox.expand(
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            Container(
+              width: 350,
+              height: 620,
+              decoration: BoxDecoration(
+                color: baseGrey,
+                borderRadius: BorderRadius.circular(12),
+              ),
 
-          Container(
-            width: 350,
-            height: 620,
-            decoration: BoxDecoration(
-              color: baseGrey,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                const SizedBox(height: 10),
-                const SettingsTile(text: 'General'),
-                const Divider(color: Colors.black),
-                const SettingsTile(text: 'Appearance'),
-                const Divider(color: Colors.black),
-                const SettingsTile(text: 'My Portfolio'),
-                const Divider(color: Colors.black),
-                const SettingsTile(text: 'Github'),
-                const SizedBox(height: 40),
-                Container(
-                  width: 250,
-                  height: 250,
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(12),
+              // INNER SETTINGS PANE
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+
+                  // on tap -> instead display general settings page
+                  SettingsTile(
+                    text: 'General',
+                    index: settings_index,
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Add image here',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                  const Divider(color: Colors.black),
+                  SettingsTile(
+                    text: 'Appearance',
+                    index: settings_index,
+                  ),
+                  const Divider(color: Colors.black),
+                  SettingsTile(
+                    text: 'My Portfolio',
+                    index: settings_index,
+                  ),
+                  const Divider(color: Colors.black),
+                  SettingsTile(
+                    text: 'Github',
+                    index: settings_index,
+                  ),
+                  const SizedBox(height: 40),
+
+                  // IMAGE FOR APP
+                  Container(
+                    width: 250,
+                    height: 250,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Add image here',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     Container(
-          //       margin: const EdgeInsets.symmetric(horizontal: 20),
-          //       height: 50,
-          //       width: 150,
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(12),
-          //         color: baseGrey,
-          //       ),
-          //       child: const Center(
-          //         child: Text(
-          //           'Appearance',
-          //           style: TextStyle(
-          //             fontSize: 20,
-          //             fontWeight: FontWeight.bold,
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //     Container(
-          //       margin: const EdgeInsets.symmetric(horizontal: 20),
-          //       height: 50,
-          //       width: 150,
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(12),
-          //         color: baseGrey,
-          //       ),
-          //       child: const Center(
-          //         child: Text(
-          //           'General',
-          //           style: TextStyle(
-          //             fontSize: 20,
-          //             fontWeight: FontWeight.bold,
-          //           ),
-          //         ),
-          //       ),
-          //     )
-          //   ],
-          // ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    } else {
+      return Container();
+    }
   }
 }
