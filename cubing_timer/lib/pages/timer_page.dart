@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../components/algorithm_utils/algorithm_slider.dart';
+import '../components/controllers/algorithm_slider_controller.dart';
+import '../components/controllers/timer_controller.dart';
 import '../components/timer_utils/timer.dart';
 
 class TimerPage extends StatelessWidget {
@@ -7,21 +10,29 @@ class TimerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        // GENERATE SCRAMBLES
-        AlgorithmSlider(),
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+              create: (context) => AlgorithmSliderController()),
+          ChangeNotifierProvider(
+            create: ((context) => TimerController()),
+          )
+        ],
+        child: const Column(
+          children: [
+            AlgorithmSlider(),
 
-        SizedBox(
-          height: 110,
-        ),
+            SizedBox(
+              height: 110,
+            ),
 
-        // TIMER FOR SOLVES
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: TimerWidget(),
-        ),
-      ],
-    );
+            // TIMER FOR SOLVES
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: TimerWidget(),
+            ),
+          ],
+        ));
+    // GENERATE SCRAMBLES
   }
 }
