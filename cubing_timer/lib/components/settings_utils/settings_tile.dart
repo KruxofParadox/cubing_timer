@@ -51,9 +51,7 @@ class SettingsTile extends StatelessWidget {
     return Column(
       children: [
         unopenedTile(),
-        Container(
-          child: Text('Test text'),
-        ),
+        Text('Test text'),
       ],
     );
   }

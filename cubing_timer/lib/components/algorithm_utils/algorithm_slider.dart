@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:cubing_timer/components/const.dart';
 import 'package:provider/provider.dart';
-import '../controllers/algorithm_slider_controller.dart';
+import '../../controllers/algorithm_slider_controller.dart';
 
-class AlgorithmSlider extends StatefulWidget {
+class AlgorithmSlider extends StatelessWidget {
   const AlgorithmSlider({super.key});
 
-  @override
-  State<AlgorithmSlider> createState() => _AlgorithmSliderState();
-}
-
-class _AlgorithmSliderState extends State<AlgorithmSlider> {
   @override
   Widget build(BuildContext context) {
     return Padding(
