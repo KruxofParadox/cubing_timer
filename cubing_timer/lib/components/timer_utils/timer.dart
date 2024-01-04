@@ -1,8 +1,8 @@
 import 'package:cubing_timer/components/const.dart';
-import 'package:cubing_timer/components/controllers/algorithm_slider_controller.dart';
+import 'package:cubing_timer/controllers/algorithm_slider_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../controllers/timer_controller.dart';
+import '../../controllers/timer_controller.dart';
 import 'timer_displays.dart';
 
 class TimerWidget extends StatelessWidget {

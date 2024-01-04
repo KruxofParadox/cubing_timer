@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../components/algorithm_utils/algorithm_slider.dart';
-import '../components/controllers/algorithm_slider_controller.dart';
-import '../components/controllers/timer_controller.dart';
+import '../controllers/algorithm_slider_controller.dart';
+import '../controllers/timer_controller.dart';
 import '../components/timer_utils/timer.dart';
 
 class TimerPage extends StatelessWidget {

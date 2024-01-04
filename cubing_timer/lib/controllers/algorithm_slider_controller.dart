@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../models/timer_model.dart';
-import '../algorithm_utils/algorithms.dart';
+import '../models/timer_model.dart';
+import '../components/algorithm_utils/algorithms.dart';
 
 class AlgorithmSliderController extends ChangeNotifier {
   final TimerModel _timerModel = TimerModel(
