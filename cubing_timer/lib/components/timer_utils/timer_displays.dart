@@ -42,3 +42,39 @@ BoxDecoration timerDecoration() {
     borderRadius: BorderRadius.circular(20),
   );
 }
+
+// BUTTON FOR TIMER START/STOP/SKIP FUNCTIONS
+Padding timerButton(
+    Function() skipTimer, Color accentColor, Color mainColor, String text) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      height: 50,
+      width: 150,
+      decoration: BoxDecoration(
+        color: accentColor,
+        border: Border.all(
+          color: mainColor,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () {
+          skipTimer();
+        },
+        child: Align(
+          child: Text(
+            text,
+            style: convertFontToUbuntu(
+              20,
+              true,
+              mainColor,
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
